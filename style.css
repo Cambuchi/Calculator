@@ -14,7 +14,7 @@ body {
     align-items: center;
     justify-content: center;
     align-content: stretch;
-    background: rgb(10, 10, 10);
+    background: rgb(15, 15, 15);
 }
 
 #calc-container {
@@ -145,4 +145,5 @@ button:hover, button:focus, button.active {
 #title, #notes {
     color: white;
     padding: 0 0 20px 0px;
+    line-height: 2rem;
 }

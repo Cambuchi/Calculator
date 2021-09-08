@@ -24,6 +24,9 @@ function multiply(a, b) {
         return 'Answer OOB'
     }
     let compute = a * b;
+    if (compute < 0.00000001) {
+        return 0;
+    }
     let ans = reduceNumSize(compute)
     return ans;
 };
@@ -34,14 +37,23 @@ function divide(a, b) {
         return 'Answer OOB'
     }
     let compute = a / b;
+    if (compute < 0.00000001) {
+        return 0;
+    }
     let ans = reduceNumSize(compute)
+    console.log(ans)
     return ans;
 };
 
 function reduceNumSize(num) {
     // Reduce the size of the computed number so that it fits on the display.
     // Numbers that are too large receive an Answer Out of Bounds display.
+
     let numArray = [...num.toString()]
+    if (numArray.includes('e')) {
+        num = num.toFixed(num.toString().split('-')[1])
+        numArray = [...num.toString()]
+    }
 
     // Logic to deal with floating point numbers (when decimals are present)
     if (numArray.includes('.')) {
@@ -56,6 +68,9 @@ function reduceNumSize(num) {
         // If decimal position within display range, display number and decimals up to 10 digits.
         } else if (numArray.indexOf('.') < 10) {
             let shortenedNum = parseFloat(numArray.slice(0, 10).join(''));
+            if ([...shortenedNum.toString()].includes('e')) {
+                return shortenedNum.toFixed(shortenedNum.toString().split('-')[1])
+            }
             let fixed = [...shortenedNum.toString()].length - numArray.indexOf('.') - 1;
             return shortenedNum.toFixed(fixed);
         } else if (numArray.indexOf('.') > 11) {
@@ -204,6 +219,7 @@ const operatorTable = {
     '*':'mul',
     '/':'div',
 }
+const keylist = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/', '.', '=', 'Enter', 'Backspace']
 
 const numberButtons = Array.from(document.querySelectorAll('.numbtn'));
 numberButtons.forEach(button => button.addEventListener('click', function() {numPress(button.textContent)}));
@@ -225,42 +241,45 @@ clearmem.addEventListener('click', function() {clearMemory()});
 
 // Adds keyboard compatibility
 document.addEventListener('keydown', (e) => {
-    e.preventDefault();
     let keyval = e.key;
-    let keycode = e.code;
-    let keypressed = document.querySelector(`.${keycode}`)
-    if (keyval == '+') {
-        keypressed = document.querySelector('.NumpadAdd')
-    } else if (keyval == '*') {
-        keypressed = document.querySelector('.NumpadMultiply')
-    }
-    keypressed.classList.add("active");
+    if (keylist.includes(keyval)) {
+        e.preventDefault();
+        let keycode = e.code;
+        let keypressed = document.querySelector(`.${keycode}`)
+        if (keyval == '+') {
+            keypressed = document.querySelector('.NumpadAdd')
+        } else if (keyval == '*') {
+            keypressed = document.querySelector('.NumpadMultiply')
+        }
+        keypressed.classList.add("active");
 
-    if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(keyval)) {
-        numPress(keyval);
-    } else if (['+', '-', '*', '/'].includes(keyval)) {
-        prep(currentValue, keyval);
-    } else if (['.'].includes(keyval)) {
-        dotPress();
-    } else if (['=', 'Enter'].includes(keyval)) {
-        equals(currentOperation);
-    } else if (['Backspace'].includes(keyval)) {
-        backPress();
-    }
+        if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(keyval)) {
+            numPress(keyval);
+        } else if (['+', '-', '*', '/'].includes(keyval)) {
+            prep(currentValue, keyval);
+        } else if (['.'].includes(keyval)) {
+            dotPress();
+        } else if (['=', 'Enter'].includes(keyval)) {
+            equals(currentOperation);
+        } else if (['Backspace'].includes(keyval)) {
+            backPress();
+        }
+    }   
   }, false);
 
   document.addEventListener('keyup', (e) => {
-    e.preventDefault();
     let keyval = e.key;
-    let keycode = e.code;
-    let keypressed = document.querySelector(`.${keycode}`)
-    if (keyval == '+') {
-        keypressed = document.querySelector('.NumpadAdd')
-    } else if (keyval == '*') {
-        keypressed = document.querySelector('.NumpadMultiply')
+    if (keylist.includes(keyval)) {
+        e.preventDefault();
+        let keycode = e.code;
+        let keypressed = document.querySelector(`.${keycode}`)
+        if (keyval == '+') {
+            keypressed = document.querySelector('.NumpadAdd')
+        } else if (keyval == '*') {
+            keypressed = document.querySelector('.NumpadMultiply')
+        }
+        keypressed.classList.remove("active");
     }
-    keypressed.classList.remove("active");
-
   }, false);
 
 
