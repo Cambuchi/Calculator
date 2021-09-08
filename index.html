@@ -13,7 +13,7 @@
 </head>
 <body>
     <div id="title">
-        <h1>BASIC CALCULATOR</h1>
+        <h1>CALCULATOR</h1>
     </div>
     <div id="calc-container">
         <div class="calc-item" id="display">
@@ -31,68 +31,76 @@
                 </button>
             </div>
             <div class="button clear-btn">
-                <button id="back">
+                <button class="Backspace" id="back">
                     <img src="backspace(1).png" alt="undo">
                 </button>
             </div>
         </div>
         <div class="buttons calc-item">
             <div class="button num">
-                <button class="numbtn" id="seven">7</button>
+                <button class="numbtn Digit7 Numpad7" id="seven">7</button>
             </div>
             <div class="button num">
-                <button class="numbtn" id="eight">8</button>
+                <button class="numbtn Digit8 Numpad8" id="eight">8</button>
             </div>
             <div class="button num">
-                <button class="numbtn" id="nine">9</button>
+                <button class="numbtn Digit9 Numpad9" id="nine">9</button>
             </div>
             <div class="button operator">
-                <button class="opbtn" id="plus">+</button>
+                <button class="opbtn NumpadAdd" id="plus">+</button>
             </div>
         </div>
         <div class="buttons calc-item">
             <div class="button num">
-                <button class="numbtn" id="four">4</button>
+                <button class="numbtn Digit4 Numpad4" id="four">4</button>
             </div>
             <div class="button num">
-                <button class="numbtn" id="five">5</button>
+                <button class="numbtn Digit5 Numpad5" id="five">5</button>
             </div>
             <div class="button num">
-                <button class="numbtn" id="six">6</button>
+                <button class="numbtn Digit6 Numpad6" id="six">6</button>
             </div>
             <div class="button operator">
-                <button class="opbtn" id="minus">-</button>
+                <button class="opbtn NumpadSubtract Minus" id="minus">-</button>
             </div>
         </div>
         <div class="buttons calc-item">
             <div class="button num">
-                <button class="numbtn" id="one">1</button>
+                <button class="numbtn Digit1 Numpad1" id="one">1</button>
             </div>
             <div class="button num">
-                <button class="numbtn" id="two">2</button>
+                <button class="numbtn Digit2 Numpad2" id="two">2</button>
             </div>
             <div class="button num">
-                <button class="numbtn" id="three">3</button>
+                <button class="numbtn Digit3 Numpad3" id="three">3</button>
             </div>
             <div class="button operator">
-                <button class="opbtn" id="multiply">*</button>
+                <button class="opbtn NumpadMultiply" id="multiply">*</button>
             </div>
         </div>
         <div class="buttons calc-item">
             <div class="button num">
-                <button class="numbtn" id="zero">0</button>
+                <button class="numbtn Digit0 Numpad0" id="zero">0</button>
             </div>
             <div class="button num">
-                <button id="dot">.</button>
+                <button class="NumpadDecimal Period" id="dot">.</button>
             </div>
             <div class="button equals">
-                <button id="equal">=</button>
+                <button class="Equal NumpadEnter Enter" id="equal">=</button>
             </div>
             <div class="button operator">
-                <button class="opbtn" id="divide">/</button>
+                <button class="opbtn Slash NumpadDivide" id="divide">/</button>
             </div>
         </div>
 
+    </div>
+    <div id="notes">
+        <h2>Features:</h2>
+        <ul>
+            <li>Displays up to 10 digits.</li>
+            <li>Can handle floating point numbers.</li>
+            <li>Accessible by mouse via clicking or by using the keyboard.</li>
+        </ul>
     </div>
     <div id="footer"></div>
     <script src="calculator.js"></script>

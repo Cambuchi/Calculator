@@ -56,7 +56,8 @@ function reduceNumSize(num) {
         // If decimal position within display range, display number and decimals up to 10 digits.
         } else if (numArray.indexOf('.') < 10) {
             let shortenedNum = parseFloat(numArray.slice(0, 10).join(''));
-            return shortenedNum;
+            let fixed = [...shortenedNum.toString()].length - numArray.indexOf('.') - 1;
+            return shortenedNum.toFixed(fixed);
         } else if (numArray.indexOf('.') > 11) {
             return 'Answer OOB'
         }
@@ -224,7 +225,16 @@ clearmem.addEventListener('click', function() {clearMemory()});
 
 // Adds keyboard compatibility
 document.addEventListener('keydown', (e) => {
-    var keyval = e.key;
+    e.preventDefault();
+    let keyval = e.key;
+    let keycode = e.code;
+    let keypressed = document.querySelector(`.${keycode}`)
+    if (keyval == '+') {
+        keypressed = document.querySelector('.NumpadAdd')
+    } else if (keyval == '*') {
+        keypressed = document.querySelector('.NumpadMultiply')
+    }
+    keypressed.classList.add("active");
 
     if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(keyval)) {
         numPress(keyval);
@@ -237,6 +247,20 @@ document.addEventListener('keydown', (e) => {
     } else if (['Backspace'].includes(keyval)) {
         backPress();
     }
+  }, false);
+
+  document.addEventListener('keyup', (e) => {
+    e.preventDefault();
+    let keyval = e.key;
+    let keycode = e.code;
+    let keypressed = document.querySelector(`.${keycode}`)
+    if (keyval == '+') {
+        keypressed = document.querySelector('.NumpadAdd')
+    } else if (keyval == '*') {
+        keypressed = document.querySelector('.NumpadMultiply')
+    }
+    keypressed.classList.remove("active");
+
   }, false);
 
 
