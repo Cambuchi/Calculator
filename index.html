@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modern-normalize.css">
+    <title>Cam's Basic Calculator</title>
+</head>
+<body>
+    <div id="title">
+        <h1>BASIC CALCULATOR</h1>
+    </div>
+    <div id="calc-container">
+        <div class="calc-item" id="display">
+            <h2 id="display-nums">0</h2>
+        </div>
+        <div class="buttons calc-item" id="clear-container">
+            <div class="button clear-btn">
+                <button id="clearmem">CM</button>
+            </div>
+            <div class="button clear-btn">
+                <button id="clear">C</button>
+            </div>
+            <div class="button">
+                <button id="invisible">
+                </button>
+            </div>
+            <div class="button clear-btn">
+                <button id="back">
+                    <img src="backspace(1).png" alt="undo">
+                </button>
+            </div>
+        </div>
+        <div class="buttons calc-item">
+            <div class="button num">
+                <button class="numbtn" id="seven">7</button>
+            </div>
+            <div class="button num">
+                <button class="numbtn" id="eight">8</button>
+            </div>
+            <div class="button num">
+                <button class="numbtn" id="nine">9</button>
+            </div>
+            <div class="button operator">
+                <button class="opbtn" id="plus">+</button>
+            </div>
+        </div>
+        <div class="buttons calc-item">
+            <div class="button num">
+                <button class="numbtn" id="four">4</button>
+            </div>
+            <div class="button num">
+                <button class="numbtn" id="five">5</button>
+            </div>
+            <div class="button num">
+                <button class="numbtn" id="six">6</button>
+            </div>
+            <div class="button operator">
+                <button class="opbtn" id="minus">-</button>
+            </div>
+        </div>
+        <div class="buttons calc-item">
+            <div class="button num">
+                <button class="numbtn" id="one">1</button>
+            </div>
+            <div class="button num">
+                <button class="numbtn" id="two">2</button>
+            </div>
+            <div class="button num">
+                <button class="numbtn" id="three">3</button>
+            </div>
+            <div class="button operator">
+                <button class="opbtn" id="multiply">*</button>
+            </div>
+        </div>
+        <div class="buttons calc-item">
+            <div class="button num">
+                <button class="numbtn" id="zero">0</button>
+            </div>
+            <div class="button num">
+                <button id="dot">.</button>
+            </div>
+            <div class="button equals">
+                <button id="equal">=</button>
+            </div>
+            <div class="button operator">
+                <button class="opbtn" id="divide">/</button>
+            </div>
+        </div>
+
+    </div>
+    <div id="footer"></div>
+    <script src="calculator.js"></script>
+</body>
+</html>
