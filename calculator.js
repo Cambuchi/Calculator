@@ -239,6 +239,16 @@ back.addEventListener('click', function() {backPress()})
 clear.addEventListener('click', function() {clearCurrent()});
 clearmem.addEventListener('click', function() {clearMemory()});
 
+// Adds mouseover gui effect
+const allButtons = Array.from(document.querySelectorAll('.btn'));
+allButtons.forEach(button => button.addEventListener('mouseenter', (e) => {
+    button.classList.add("active")
+}));
+allButtons.forEach(button => button.addEventListener('mouseleave', (e) => {
+    button.classList.remove("active")
+}));
+
+
 // Adds keyboard compatibility
 document.addEventListener('keydown', (e) => {
     let keyval = e.key;
